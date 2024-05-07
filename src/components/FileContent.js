@@ -61,7 +61,7 @@ const FileContent = ({ fileContent }) => {
   // Count total occurrences
   let totalCount = 0;
   if (searchText !== '') {
-    totalCount = fileContent.split(searchText).length - 1;
+    totalCount = fileContent.toLowerCase().split(searchText.toLowerCase()).length - 1;
   }
 
   const count = useWordCount(fileContent)
