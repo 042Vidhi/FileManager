@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useDateFormat from '../hooks/useDateFormat';
 import { storage ,BUCKET_ID } from '../utils/appwrite/config';
-import useWordCount from '../hooks/useWordCount';
+
 
 const FileCard = ({ fileData }) => {
 
@@ -31,7 +31,6 @@ const FileCard = ({ fileData }) => {
   };
   const fileName = fileData.name;
   const uploadDate = useDateFormat(fileData.$createdAt)
-  // const wordCount = useWordCount(fileData.$)
 
   return (
     <div
@@ -40,7 +39,6 @@ const FileCard = ({ fileData }) => {
     >
       <div className="mb-2"><kbd>File Name: {fileName}</kbd></div>
       <div className="mb-2 text-sm"><kbd>Uploaded on: {uploadDate}</kbd></div>
-      {/* <div className='text-sm'><kbd>Total WordCount: {fileData.wordCount}</kbd></div> */}
     </div>
   );
 };

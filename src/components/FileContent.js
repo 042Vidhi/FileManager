@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import useWordCount from '../hooks/useWordCount';
+import { useNavigate } from 'react-router-dom';
 
 const FileContent = ({ fileContent }) => {
   const [searchText, setSearchText] = useState('');
   const [searchIndex, setSearchIndex] = useState(0);
   const [searchHistory,setSearchHistory] = useState([]);
   const searchInputRef = useRef(null);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -68,7 +71,14 @@ const FileContent = ({ fileContent }) => {
     {
       fileContent ? (
         <div className='bg-gray-900 text-white '>
+        <div className='flex justify-between items-center'>
+
+        <div className='border rounded px-2 ml-2 bg-gray-700 text-white w-fit cursor-pointer'
+          onClick={()=>navigate(-1)}
+          >Back
+          </div>
         <div className='text-end pr-4 pt-4'>Total Words:{count}</div>
+        </div>
         <div className='flex justify-end items-center  p-4 flex-wrap gap-2'>
           <input
             type='text'
@@ -78,7 +88,7 @@ const FileContent = ({ fileContent }) => {
             onChange={handleSearchTextChange}
             ref={searchInputRef}
           />
-          <div className='border rounded px-2 py-1 bg-gray-700 text-white'
+          <div className='border rounded px-2 py-1 bg-gray-700 text-white cursor-pointer'
           onClick={AddHistory}
           >Save
           </div>
